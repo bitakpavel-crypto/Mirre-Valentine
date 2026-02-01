@@ -1,0 +1,145 @@
+:root{
+  --bg-start: #ffafbd;
+  --bg-end: #ffc3a0;
+  --button-bg: #ff6b6b;
+  --button-hover: #ff8787;
+  --text-color: #ff4757;
+  --float-duration: 15s;
+  --float-distance: 50px;
+  --bounce-speed: 0.5s;
+  --heart-explosion: 1.5;
+  --max-width: 720px;
+  --glass: rgba(255,255,255,0.85);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text-color);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* floating background overlay */
+.bg-anim{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* container */
+.container{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:var(--max-width);
+  padding:24px;
+}
+
+/* Title */
+.title{
+  text-align:center;
+  margin-bottom:18px;
+}
+.title h1{margin:0;font-size:clamp(20px,4vw,32px)}
+.title h2{margin:6px 0 0;font-size:18px;opacity:0.9}
+
+/* Card */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+  border-radius:16px;
+  padding:22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  text-align:center;
+}
+
+/* Steps */
+.step{transition:opacity 250ms ease, transform 250ms ease}
+.hidden{display:none}
+
+/* Question */
+.question{
+  font-size:clamp(18px,3.2vw,24px);
+  margin:14px 0 20px;
+}
+
+/* Buttons */
+.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  border:0;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+  color:white;
+}
+.btn-primary{
+  background:var(--button-bg);
+  transition:background 160ms;
+}
+.btn-primary:hover{background:var(--button-hover)}
+.btn-ghost{
+  background:transparent;
+  color:var(--text-color);
+  border:2px solid rgba(255,71,87,0.08);
+}
+
+/* meter */
+.meter-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.meter{width:100%;height:18px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden;max-width:520px}
+.meter-fill{
+  height:100%;
+  background:linear-gradient(90deg,#ff6b6b,#ff4757);
+  width:0%;
+  transition:width 800ms cubic-bezier(.22,.9,.36,1);
+}
+.meter-label{font-size:14px;color:rgba(0,0,0,0.6)}
+
+/* celebration */
+.celebrate-title{font-size:18px;margin:6px 0}
+.celebrate-msg{margin:8px 0 12px}
+
+/* music */
+.music-controls{display:flex;justify-content:center;margin-top:12px}
+.btn-music{background:transparent;color:var(--text-color);border:2px dashed rgba(255,71,87,0.12);padding:8px 12px;border-radius:999px}
+
+/* floating emojis container */
+.floating{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+
+/* emoji style (created dynamically) */
+.float-emoji{
+  position:absolute;
+  font-size:20px;
+  opacity:0.95;
+  transform-origin:center;
+  will-change:transform, opacity, left, top;
+  animation: floatX var(--float-duration) linear infinite;
+}
+
+/* floatX will be cloned via style attribute with different durations/delays */
+@keyframes floatHoriz {
+  0%{transform:translateY(0) translateX(0)}
+  50%{transform:translateY(-30px) translateX(var(--float-distance))}
+  100%{transform:translateY(0) translateX(0)}
+}
+
+/* small bounce for click */
+@keyframes bounce {
+  0%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+  100%{transform:scale(1)}
+}
+
+/* responsive tweaks */
+@media (max-width:420px){
+  .card{padding:18px;border-radius:12px}
+  .title h1{font-size:20px}
+}

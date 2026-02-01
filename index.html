@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Will You Be My Valentine? 💝</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-anim"></div>
+
+  <main class="container" aria-live="polite">
+    <header class="title">
+      <h1 id="pageTitle">Will You Be My Valentine? 💝</h1>
+      <h2 id="valentineName">Mirre</h2>
+    </header>
+
+    <section id="card" class="card">
+      <!-- First Question -->
+      <div class="step" id="step-1">
+        <p class="question">Do you like me?</p>
+        <div class="buttons">
+          <button id="yes-1" class="btn btn-primary">Yes</button>
+          <button id="no-1" class="btn btn-ghost">No</button>
+        </div>
+      </div>
+
+      <!-- Second Question (Love meter) -->
+      <div class="step hidden" id="step-2">
+        <p class="question">How much do you love me?</p>
+        <div class="meter-wrap">
+          <div class="meter">
+            <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+          </div>
+          <div class="meter-label">
+            <span id="meterText">This much! 0%</span>
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="next-2" class="btn btn-primary">Next ❤️</button>
+        </div>
+      </div>
+
+      <!-- Third Question -->
+      <div class="step hidden" id="step-3">
+        <p class="question">Will you be my Valentine...?</p>
+        <div class="buttons">
+          <button id="yes-3" class="btn btn-primary">Yes!</button>
+          <button id="no-3" class="btn btn-ghost">No</button>
+        </div>
+      </div>
+
+      <!-- Celebration -->
+      <div class="step hidden" id="celebration">
+        <h3 class="celebrate-title">Yay! I'm the luckiest person...</h3>
+        <p class="celebrate-msg">Now come get your gift... 🎁💖🤗💝💋❤️💕</p>
+        <div class="buttons">
+          <button id="restart" class="btn btn-primary">Play Again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating emoji container (populated by JS) -->
+  <div id="floating" class="floating"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
